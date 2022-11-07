@@ -5,6 +5,7 @@ const apiModel = new Schema({
     lastname:{type:String},
     email:{type:String},
     adults:{type:String},
+    description:{type:String},
     createdAt: {
         type: Date,
         default: new Date(),

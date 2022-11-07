@@ -4,7 +4,7 @@ import apiModel from "./Model.js"
 const apiRouter = express.Router()
 apiRouter.post("/appointment",async(req,res,next)=>{
     try {
-        const newAppointment =new apiModel(req.body)
+        const newAppointment = new apiModel(req.body)
         const {_id} = await newAppointment.save()
         res.send({_id})
     } catch (error) {
@@ -30,8 +30,10 @@ apiRouter.get("/appointment/:id",async(req,res,next)=>{
 })
 apiRouter.put("/appointment/:id",async(req,res,next)=>{
     try {
-        const findAppointment = await apiModel.findById(req.params.id,req.body,{new:true, runValidators:true})
-res.send(findAppointment)
+        const findAppointment = await apiModel.findByIdAndUpdate(req.params.id,
+            req.body,
+            {new:true, runValidators:true})
+         res.send(findAppointment)
     } catch (error) {
         console.log(error)
     }

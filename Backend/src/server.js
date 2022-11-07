@@ -6,7 +6,7 @@ import apiRouter from "../src/Api/index.js"
 // ================================
 
 const server = express()
-const port  = process.env.PORT || 6000
+const port  = process.env.PORT || 3000
 server.use(cors())
 server.use(express.json())
 server.use("/api",apiRouter)
@@ -16,6 +16,7 @@ mongoose.connection.on(("connected"),()=>{
     console.log("mongoose is connecetd")
     server.listen(port,()=>{
             console.table(listEndpoints(server))
+            console.log(`server on ${port}`)
             
     })
 })
